@@ -7,6 +7,7 @@ no_taxa <- dim(samplenames)[1]
 rows <- dim(temp)[1]
 ambigoo_key <- NULL
 i <- 1
+j <- 1
 proto_structure_file <- NULL
 
 while (i <= rows) {
@@ -30,6 +31,15 @@ Ws <- colSums(tempstructure=="W")
 Ss <- colSums(tempstructure=="S")
 Ys <- colSums(tempstructure=="Y")
 Ks <- colSums(tempstructure=="K")
+Ns <- colSums(tempstructure=="N") + colSums(tempstructure=="-")
+
+ACMs <- which(((As > 0 & Cs > 0) | (As > 0 & Ms > 0) | (Cs > 0 & Ms > 0)) & Gs == 0 & Ts == 0 & Rs == 0 & Ws == 0 & Ss == 0 & Ys == 0 & Ks == 0 & Ns < no_taxa, arr.ind=TRUE)
+
+
+
+AGRs <- which(As >= 0 & Cs == 0 & Gs >= 0 & Ts == 0 & Ms == 0 & Rs >= 0 & Ws == 0 & Ss == 0 & Ys == 0 & Ks == 0 & Ns < no_taxa, arr.ind=TRUE)
+
+
 
 
 
