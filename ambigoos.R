@@ -20,6 +20,17 @@ seqpos <- seq(2,(2*no_taxa),2)
 tempseq <- unlist(strsplit(temp[(seqpos+1),1],""))
 tempstructure <- t(matrix(tempseq,nrow=seqlength,ncol=no_taxa))
 
+As <- colSums(tempstructure=="A")
+Cs <- colSums(tempstructure=="C")
+Gs <- colSums(tempstructure=="G")
+Ts <- colSums(tempstructure=="T")
+Ms <- colSums(tempstructure=="M")
+Rs <- colSums(tempstructure=="R")
+Ws <- colSums(tempstructure=="W")
+Ss <- colSums(tempstructure=="S")
+Ys <- colSums(tempstructure=="Y")
+Ks <- colSums(tempstructure=="K")
+
 
 
 
