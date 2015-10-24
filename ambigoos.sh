@@ -4,6 +4,8 @@ Rscript onelining.R;
 mv tempout $i;
 done;
 
+rm tempout
+
 for i in `ls *.fa*`;
 do echo $i > locinames;
 echo $i >> temp;
