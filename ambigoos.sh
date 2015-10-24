@@ -1,7 +1,11 @@
 for i in `ls *.fa*`;
-do mv $i tempfile;
-mafft tempfile > $i;
-echo $i > locinames;
+do mafft $i > temp;
+Rscript onelining.R;
+mv tempout $i;
+done;
+
+for i in `ls *.fa*`;
+do echo $i > locinames;
 echo $i >> temp;
 cat $i >> temp;
 done;
