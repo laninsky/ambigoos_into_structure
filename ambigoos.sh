@@ -1,5 +1,7 @@
 for i in `ls *.fa*`;
-do echo $i > locinames;
+do mv $i tempfile;
+mafft tempfile > $i;
+echo $i > locinames;
 echo $i >> temp;
 cat $i >> temp;
 done;
