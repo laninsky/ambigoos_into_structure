@@ -6,7 +6,7 @@ no_taxa <- dim(samplenames)[1]
 
 rows <- dim(temp)[1]
 ambigoo_key <- NULL
-j <- 1
+i <- 1
 proto_structure_file <- NULL
 
 while (i <= rows) {
@@ -17,16 +17,9 @@ j <- j + 1
 seqlength <- nchar(temp[(i+2),1])
 seqpos <- seq(2,(2*no_taxa),2)
 
-tempstructure <- matrix(NA,nrow=no_taxa,ncol=seqlength) 
+tempseq <- unlist(strsplit(temp[(seqpos+1),1],""))
+tempstructure <- t(matrix(tempseq,nrow=seqlength,ncol=no_taxa))
 
-for (k in 1:(length(seqpos))) {
-tempstructure[k,] <- unlist(strsplit(temp[(seqpos[k]+1),1],""))
-}
-
-
-
-
-tempstructure[1:no_taxa,1] <- samplenames[1:no_taxa,1]
 
 
 
