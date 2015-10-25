@@ -15,3 +15,6 @@ done;
 grep ">" `cat locinames` > samplenames
 
 Rscript ambigoos.R
+
+rm locinames
+rm samplenames
