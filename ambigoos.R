@@ -109,9 +109,22 @@ noloci <- length(loci)
 high_grade <- fin_struct[,1]
 
 for (j in 2:(noloci)) {
-colref <- which.min(colSums(proto_high_grade[3:(no_taxa*2+2),(which(proto_high_grade[1,]==loci[j],arr.ind=TRUE))]==0))
+temp_high_grade <- (proto_high_grade[,(proto_high_grade[1,]==loci[j])])
+if (is.vector(temp_high_grade)) {
+temp_high_grade <- matrix(temp_high_grade)
+high_grade <- cbind(high_grade,temp_high_grade)
+} else {
+high_grade <- cbind(high_grade,temp_high_grade[,(which.min(t(matrix(colSums(temp_high_grade[3:(no_taxa*2+2),(temp_high_grade[1,]==loci[j])]==0)))))])
+}
+}
 
+final_structure <- high_grade[3:(no_taxa*2+2),]
 
+write.table(high_grade, "structure_with_double_header.txt",quote=FALSE, col.names=FALSE,row.names=FALSE)
+write.table(final_structure, "structure.txt",quote=FALSE, col.names=FALSE,row.names=FALSE)
 
-
+print("structure.txt has the following number of taxa:")
+print(no_taxa)
+print("structure.txt has the following number of loci:")
+print(noloci-1)
 
