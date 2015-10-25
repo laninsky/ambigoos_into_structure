@@ -84,5 +84,17 @@ fin_struct[(2*i+1),(which(almost_struct[i+2,]=="-",arr.ind=TRUE))] <- 0
 fin_struct[(2*i+2),(which(almost_struct[i+2,]=="-",arr.ind=TRUE))] <- 0
 }
 
+fin_struct[1,] <- almost_struct[1,]
+fin_struct[2,] <- almost_struct[2,]
 
+samplenames[,1] <- gsub(">","",samplenames[,1])
+names <- matrix("",ncol=1,nrow=((no_taxa*2)+2))
 
+for (i in 1:no_taxa) {
+names[(2*i+1)] <- samplenames[i,1]
+names[(2*i+2)] <- samplenames[i,1]
+}
+
+fin_struct <- cbind(names,fin_struct)
+
+write.table(fin_struct, "full_SNP_record.txt",quote=FALSE, col.names=FALSE,row.names=FALSE)
