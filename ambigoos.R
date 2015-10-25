@@ -34,20 +34,13 @@ Ks <- colSums(tempstructure=="K")
 Ns <- colSums(tempstructure=="N") + colSums(tempstructure=="-")
 
 ACMs <- which(((As > 0 & Cs > 0) | (As > 0 & Ms > 0) | (Cs > 0 & Ms > 0)) & Gs == 0 & Ts == 0 & Rs == 0 & Ws == 0 & Ss == 0 & Ys == 0 & Ks == 0 & Ns < no_taxa, arr.ind=TRUE)
-
 AGRs <- which(((As > 0 & Gs > 0) | (As > 0 & Rs > 0) | (Gs > 0 & Rs > 0)) & Cs == 0 & Ts == 0 & Ms == 0 & Ws == 0 & Ss == 0 & Ys == 0 & Ks == 0 & Ns < no_taxa, arr.ind=TRUE)
-
 ATWs <- which(((As > 0 & Ts > 0) | (As > 0 & Ws > 0) | (Ts > 0 & Ws > 0)) & Cs == 0 & Gs == 0 & Ms == 0 & Rs == 0 & Ss == 0 & Ys == 0 & Ks == 0 & Ns < no_taxa, arr.ind=TRUE)
-
 CGSs <- which(((Cs > 0 & Gs > 0) | (Cs > 0 & Ss > 0) | (Gs > 0 & Ss > 0)) & As == 0 & Ts == 0 & Rs == 0 & Ws == 0 & Ms == 0 & Ys == 0 & Ks == 0 & Ns < no_taxa, arr.ind=TRUE)
-
-CTSs <- which(((Cs > 0 & Ts > 0) | (Cs > 0 & Ys > 0) | (Ts > 0 & Ys > 0)) & As == 0 & Gs == 0 & Rs == 0 & Ws == 0 & Ms == 0 & Ss == 0 & Ks == 0 & Ns < no_taxa, arr.ind=TRUE)
-
+CTYs <- which(((Cs > 0 & Ts > 0) | (Cs > 0 & Ys > 0) | (Ts > 0 & Ys > 0)) & As == 0 & Gs == 0 & Rs == 0 & Ws == 0 & Ms == 0 & Ss == 0 & Ks == 0 & Ns < no_taxa, arr.ind=TRUE)
 GTKs <- which(((Gs > 0 & Ts > 0) | (Gs > 0 & Ks > 0) | (Ts > 0 & Ks > 0)) & As == 0 & Cs == 0 & Rs == 0 & Ws == 0 & Ms == 0 & Ss == 0 & Ys == 0 & Ns < no_taxa, arr.ind=TRUE)
 
-
-AGRs <- which(As >= 0 & Cs == 0 & Gs >= 0 & Ts == 0 & Ms == 0 & Rs >= 0 & Ws == 0 & Ss == 0 & Ys == 0 & Ks == 0 & Ns < no_taxa, arr.ind=TRUE)
-
+sites <- c(ACMs,AGRs,ATWs,CGSs,CTYs,GTKs)
 
 
 
