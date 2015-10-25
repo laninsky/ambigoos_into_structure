@@ -8,7 +8,8 @@ rows <- dim(temp)[1]
 ambigoo_key <- NULL
 i <- 1
 j <- 1
-proto_structure_file <- NULL
+proto_struct <- NULL
+almost_struct <- NULL
 
 while (i <= rows) {
 if ((length(grep("fa*",temp[i,1])))>0) {
@@ -18,7 +19,7 @@ j <- j + 1
 seqlength <- nchar(temp[(i+2),1])
 seqpos <- seq(2,(2*no_taxa),2)
 
-tempseq <- unlist(strsplit(temp[(seqpos+1),1],""))
+tempseq <- unlist(strsplit(temp[(seqpos+i),1],""))
 tempstructure <- t(matrix(tempseq,nrow=seqlength,ncol=no_taxa))
 
 As <- colSums(tempstructure=="A")
@@ -40,14 +41,48 @@ CGSs <- which(((Cs > 0 & Gs > 0) | (Cs > 0 & Ss > 0) | (Gs > 0 & Ss > 0)) & As =
 CTYs <- which(((Cs > 0 & Ts > 0) | (Cs > 0 & Ys > 0) | (Ts > 0 & Ys > 0)) & As == 0 & Gs == 0 & Rs == 0 & Ws == 0 & Ms == 0 & Ss == 0 & Ks == 0 & Ns < no_taxa, arr.ind=TRUE)
 GTKs <- which(((Gs > 0 & Ts > 0) | (Gs > 0 & Ks > 0) | (Ts > 0 & Ks > 0)) & As == 0 & Cs == 0 & Rs == 0 & Ws == 0 & Ms == 0 & Ss == 0 & Ys == 0 & Ns < no_taxa, arr.ind=TRUE)
 
-sites <- c(ACMs,AGRs,ATWs,CGSs,CTYs,GTKs)
+sites <- array(c(ACMs,AGRs,ATWs,CGSs,CTYs,GTKs))
+sites <- sites[order(sites)]
 
-
-
-
+proto_struct <- rbind((j-1),sites,tempstructure[,sites])
+almost_struct <- cbind(almost_struct,proto_struct)
 
 i <- i + 2*(no_taxa) + 1
 } else {
 i <- i + 1
 }
 }
+
+write.table(ambigoo_key, "loci_key_ambg_into_struct.txt",quote=FALSE, col.names=FALSE,row.names=FALSE)
+
+fin_struct <- matrix("",ncol=(dim(almost_struct)[2]),nrow=((no_taxa*2)+2))
+
+for (i in 1:no_taxa) {
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="A",arr.ind=TRUE))] <- 1
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="A",arr.ind=TRUE))] <- 1
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="C",arr.ind=TRUE))] <- 2
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="C",arr.ind=TRUE))] <- 2
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="G",arr.ind=TRUE))] <- 3
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="G",arr.ind=TRUE))] <- 3
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="T",arr.ind=TRUE))] <- 4
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="T",arr.ind=TRUE))] <- 4
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="M",arr.ind=TRUE))] <- 1
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="M",arr.ind=TRUE))] <- 2
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="R",arr.ind=TRUE))] <- 1
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="R",arr.ind=TRUE))] <- 3
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="W",arr.ind=TRUE))] <- 1
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="W",arr.ind=TRUE))] <- 4
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="S",arr.ind=TRUE))] <- 2
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="S",arr.ind=TRUE))] <- 3
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="Y",arr.ind=TRUE))] <- 2
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="Y",arr.ind=TRUE))] <- 4
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="K",arr.ind=TRUE))] <- 3
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="K",arr.ind=TRUE))] <- 4
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="N",arr.ind=TRUE))] <- 0
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="N",arr.ind=TRUE))] <- 0
+fin_struct[(2*i+1),(which(almost_struct[i+2,]=="-",arr.ind=TRUE))] <- 0
+fin_struct[(2*i+2),(which(almost_struct[i+2,]=="-",arr.ind=TRUE))] <- 0
+}
+
+
+
