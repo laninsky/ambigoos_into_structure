@@ -98,3 +98,20 @@ names[(2*i+2)] <- samplenames[i,1]
 fin_struct <- cbind(names,fin_struct)
 
 write.table(fin_struct, "full_SNP_record.txt",quote=FALSE, col.names=FALSE,row.names=FALSE)
+
+prop <- read.table("proportion",header=FALSE,stringsAsFactors=FALSE,sep="\t")
+
+zeroes <- array(c(which(((colSums(fin_struct==0)/(no_taxa*2))<=(1-prop[1,1])),arr.ind=TRUE)))
+
+proto_high_grade <- fin_struct[,zeroes]
+loci <- unique(proto_high_grade[1,])
+noloci <- length(loci)
+high_grade <- fin_struct[,1]
+
+for (j in 2:(noloci)) {
+colref <- which.min(colSums(proto_high_grade[3:(no_taxa*2+2),(which(proto_high_grade[1,]==loci[j],arr.ind=TRUE))]==0))
+
+
+
+
+
