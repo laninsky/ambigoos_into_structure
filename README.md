@@ -26,3 +26,10 @@ bash ambigoos.sh
 
 #Version history
 v0.0.0 Brand new, may have some bugs
+
+# This pipeline wouldn't be possible without:
+MAFFT: http://mafft.cbrc.jp/alignment/software/
+
+R: R Core Team. 2015. R: A language and environment for statistical computing. URL http://www.R-project.org/. R Foundation for Statistical Computing, Vienna, Austria. https://www.r-project.org/
+
+Stringr: Hadley Wickham (2012). stringr: Make it easier to work with strings.. R package version 0.6.2. http://CRAN.R-project.org/package=stringr (for up-to-date citation information run citation("stringr" in R)
