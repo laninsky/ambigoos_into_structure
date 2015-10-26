@@ -14,7 +14,7 @@ structure_with_double_header.txt: A 'quasi' structure file with two heading rows
 structure.txt: As for the above file, but without the headers i.e. ready to plug straight into structure.
 
 # How to run it
-In your folder of fasta alignments for each locus, create a file called proportion which has the proportion of missing data you wish to allow e.g.
+In your folder of fasta alignments for each locus, create a file called proportion which has the proportion of complete data you want i.e. (1 - the amount of missing data you want to allow) e.g.
 ```
 0.8
 ```
