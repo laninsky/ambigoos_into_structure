@@ -48,4 +48,4 @@ write.table(final_structure, "mod_structure.txt",quote=FALSE, col.names=FALSE,ro
 print("mod_structure.txt has the following number of taxa:")
 print(no_taxa)
 print("mod_structure.txt has the following number of loci:")
-print(noloci-1)
+print(noloci)
