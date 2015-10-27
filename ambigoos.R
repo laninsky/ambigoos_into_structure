@@ -44,9 +44,14 @@ GTKs <- which(((Gs > 0 & Ts > 0) | (Gs > 0 & Ks > 0) | (Ts > 0 & Ks > 0)) & As =
 sites <- array(c(ACMs,AGRs,ATWs,CGSs,CTYs,GTKs))
 sites <- sites[order(sites)]
 
+if(!(length(sites)==0)) {
+if(length(sites)==1) {
+proto_struct <- rbind((j-1),sites,(matrix(tempstructure[,sites])))
+} else {
 proto_struct <- rbind((j-1),sites,tempstructure[,sites])
+}
 almost_struct <- cbind(almost_struct,proto_struct)
-
+}
 i <- i + 2*(no_taxa) + 1
 } else {
 i <- i + 1
