@@ -24,12 +24,16 @@ Make sure you copy the Rscripts onelining.R and ambigoos.R to your folder as wel
 
 bash ambigoos.sh
 
-# What if you want to tweak the individuals in the file?
-It probably makes sense to run the ambigoos pipeline once for all of your samples and then focus on subsets of your samples if you don't want to run structure with all the samples included. To do that, we are going to use the full_SNP_record.txt file, pull out the samples we don't run, and then run tweaking.R on our modified full_SNP_record.txt. Make sure that you change the value in your proportion file to whatever you would like the completeness of data across your ingroup to be.
+# What if you want to tweak the individuals in the file/change completeness of dataset?
+It probably makes sense to run the ambigoos pipeline once for all of your samples permitting a lot of missing data, and then focus on subsets of your samples/loci with less missing data, if you don't want to run structure with all the samples included/a lot of msising data. To do that, we are going to use the full_SNP_record.txt file, pull out the samples we don't run, and then run tweaking.R on our modified full_SNP_record.txt. Make sure that you change the value in your proportion file to whatever you would like the completeness of data across your ingroup to be.
 
 First step: grep everything except the samples you don't want e.g.
 ```
 grep -v "kaloula_baleata*" full_SNP_record.txt | grep -v "kaloula_cfbaleata*" | grep -v "kaloula_indo*" | grep -v "kaloula_mediolineata*" | grep -v "kaloula_pulchra*" > mod_full_SNP_record.txt
+```
+If you are just high-grading for completeness and don't want to exclude any samples then:
+```
+cp full_SNP_record.txt mod_full_SNP_record.txt
 ```
 
 Second step:
