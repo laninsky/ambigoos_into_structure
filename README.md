@@ -29,7 +29,7 @@ It probably makes sense to run the ambigoos pipeline once for all of your sample
 
 First step: grep everything except the samples you don't want e.g.
 ```
-grep -v "kaloula_baleata*" full_SNP_record.txt | grep -v "kaloula_cfbaleata*" | grep -v "kaloula_indo*" | grep -v "kaloula_mediolineata*" | grep -v "kaloula_pulchra*" > mod_full_SNP_record.fasta
+grep -v "kaloula_baleata*" full_SNP_record.txt | grep -v "kaloula_cfbaleata*" | grep -v "kaloula_indo*" | grep -v "kaloula_mediolineata*" | grep -v "kaloula_pulchra*" > mod_full_SNP_record.txt
 ```
 
 Second step:
