@@ -18,3 +18,4 @@ Rscript ambigoos.R
 
 rm locinames
 rm samplenames
+rm temp
