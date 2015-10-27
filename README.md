@@ -20,7 +20,7 @@ In your folder of fasta alignments for each locus, create a file called proporti
 ```
 This number should be the only thing in the file.
 
-Make sure you copy the Rscripts onelining.R and ambigoos.R to your folder as well, and the ambigoos.sh file. You can then run the whole shebang by:
+Make sure you copy the Rscripts onelining.R and ambigoos.R to your folder as well, and the ambigoos.sh file. Make sure you have installed the stringr package and any dependencies (e.g. stringi, magrittr) in R before running the pipeline. After doing that, you can then run the whole shebang by:
 
 bash ambigoos.sh
 
