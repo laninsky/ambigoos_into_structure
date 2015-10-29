@@ -43,6 +43,15 @@ Rscript tweaking.R
 
 
 # What if you wanted to add a population identifier column after the individual column?
+Set up your pop_map file following the instructions at (pop in first column, sample name in the second):
+https://github.com/laninsky/phase_everyone_into_migrate#pop-map-designations
+
+Save this file in the same directory as your output structure.txt and/or mod_structure.txt files
+```
+mv pop_map temp
+grep -v '^$' temp > pop_map
+rm temp
+```
 TBD
 
 
