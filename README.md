@@ -57,6 +57,7 @@ awk '{ print "sed" " " "-i" " " "'\''" "s/" $2 "/" $2 " " $1 "/g" "'\''" " " "st
 
 bash to_sed.sh
 ```
+The struture_popmap.txt (or mod_structure_popmap.txt) files will have the population designator inserted in the second column.
 
 #Version history
 v0.0.0 Brand new, may have some bugs
