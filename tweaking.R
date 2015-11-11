@@ -36,6 +36,10 @@ if (is.vector(temp_high_grade)) {
 temp_high_grade <- matrix(temp_high_grade)
 high_grade <- cbind(high_grade,temp_high_grade)
 } else {
+
+#ADD IN TEST FOR PROP FILE HERE AND CHANGES IF NECESSARY
+
+
 high_grade <- cbind(high_grade,temp_high_grade[,(which.min(t(matrix(colSums(temp_high_grade[3:(no_taxa*2+2),(temp_high_grade[1,]==loci[j])]==0)))))])
 }
 }
