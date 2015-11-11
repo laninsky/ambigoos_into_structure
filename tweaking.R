@@ -36,11 +36,22 @@ if (is.vector(temp_high_grade)) {
 temp_high_grade <- matrix(temp_high_grade)
 high_grade <- cbind(high_grade,temp_high_grade)
 } else {
-
-#ADD IN TEST FOR PROP FILE HERE AND CHANGES IF NECESSARY
-
-
+if(is.na(prop[2,1])) {
 high_grade <- cbind(high_grade,temp_high_grade[,(which.min(t(matrix(colSums(temp_high_grade[3:(no_taxa*2+2),(temp_high_grade[1,]==loci[j])]==0)))))])
+} else {
+minmaj <- matrix(0,ncol=(dim(temp_high_grade)[2]),nrow=4)
+minmaj[1,] <- colSums(temp_high_grade[3:(dim(temp_high_grade)[1]),]==1)
+minmaj[2,] <- colSums(temp_high_grade[3:(dim(temp_high_grade)[1]),]==2)
+minmaj[3,] <- colSums(temp_high_grade[3:(dim(temp_high_grade)[1]),]==3)
+minmaj[4,] <- colSums(temp_high_grade[3:(dim(temp_high_grade)[1]),]==4)
+
+highmin <- matrix(0, ncol=(dim(temp_high_grade)[2]),nrow=1)
+for (i in 1:(dim(temp_high_grade)[2])) {
+highmin[i] <-(minmaj[(max.col(t(minmaj))[i]),i])/(sum(minmaj[1:4,i]))
+}
+
+high_grade <- cbind(high_grade,temp_high_grade[,(which.min(highmin))])
+}
 }
 }
 
