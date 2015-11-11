@@ -4,7 +4,7 @@ temp <- read.table("mod_full_SNP_record.txt",header=FALSE,stringsAsFactors=FALSE
 no_taxa <- (dim(temp)[1]-2)/2
 prop <- read.table("proportion",header=FALSE,stringsAsFactors=FALSE,sep="\t")
 
-zeroes <- array(c(which(((colSums(temp[3:(dim(temp)[1]),]==0)/(no_taxa*2))<=(1-prop[1,1])),arr.ind=TRUE)))
+zeroes <- array(c(which(((colSums(temp[3:(dim(temp)[1]),]==0)/(no_taxa*2))<=(1-as.numeric(prop[1,1]))),arr.ind=TRUE)))
 SNPs_complete_enough <- temp[,zeroes]
 rm(temp)
 
