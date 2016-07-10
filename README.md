@@ -1,6 +1,3 @@
-#UPDATE, READ BEFORE USE
-This pipeline isn't actually compatible with pyRAD alleles_into_structure, because I've transposed how the full_SNP_record.txt is written out by that pipeline (e.g. samples across the top, loci/SNPs down the side). Use the code associated with that (https://github.com/laninsky/pyRAD_alleles_into_structure/blob/master/pyRAD_alleles.R) to filter for samples, rather than this one, if you are following along with that pipeline. If you are following this one from start to finish, you should be good!
-
 # ambigoos_into_structure
 Taking fasta alignments with ambiguity codes and turning them into a structure file
 
