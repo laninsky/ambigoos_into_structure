@@ -68,8 +68,9 @@ bash to_sed.sh
 ```
 The struture_popmap.txt (or mod_structure_popmap.txt) files will have the population designator inserted in the second column.
 
-#Version history
+# Version history
 v0.1.0 The code assumed the order of taxa in each fasta files was the same, which will have led to nonsense results if this was not the case for your data. Sorting on sample name is now included in the onelining.R script in this repository.
+
 v0.0.0 Brand new, may have some bugs
 
 # This pipeline wouldn't be possible without:
