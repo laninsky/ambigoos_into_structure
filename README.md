@@ -1,8 +1,10 @@
 # ambigoos_into_structure v0.1.0 (correcting a pretty big bug!)
-Taking fasta alignments with ambiguity codes and turning them into a structure file
+Taking fasta alignments with ambiguity codes and turning them into a structure file (or filtering down a pre-existing structure file)
 
 # What it does
 This set of scripts takes a folder full of fasta files (one per locus, with individuals with mising data padded using Ns - every individual must be present in the files...), and creates a structure file, taking any ambiguity codes in the fasta and writing them out as SNPs. It first aligns the sequences within each locus (each separate fasta file), and then makes sure there is just one sequence per line rather than having the sequence break across multiple lines (onelining.R - note, several of my other repositories have a 'onelining.R' Rscript, but the one in this repository is slightly different, so make sure to grab it and not any of the others!), cats all the fasta files into a giant file called "temp", extracts the sample names, and then finally starts looking for SNPs (ambigoos.R).
+
+Alternately, if you are starting out from a pre-existing structure file, and just want to use the utilities in this repository to filter your structure file, check out the subfolder: convert_from_existing_structure_file. This code assumes your data is coded as 1-4 (A,C,G,T) with missing data coded as 0. If this is not the case you could check out the code at https://github.com/laninsky/creating_dadi_SNP_input_from_structure/blob/master/switch_SNP_coding.R (but note, this code assumes header files etc as described in that repository).
 
 # Files it creates
 full_SNP_record.txt: This file is a 'quasi' structure file with two heading rows. The first row gives a number representing the locus (key given by loci_key_amb_into_struct.txt), and in the second row the position of the SNP within that locus. All bi-allelic SNPs for each locus that meet your threshold for missing data (see 'How to run it' below) are printed out in this file. This and the other files created by the script use "0" to represent missing data, and have two lines per individual (1 = A, 2 = C, 3 = G, 4 = T).
