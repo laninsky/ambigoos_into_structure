@@ -60,11 +60,11 @@ https://github.com/laninsky/phase_everyone_into_migrate#pop-map-designations
 Save this file in the same directory as your output structure.txt and/or mod_structure.txt files. The code below is for the structure.txt files - if you want to put the pop labels into your mod_structure.txt files, find and replace 'structure' and replace with 'mod_structure'
 ```
 mv pop_map temp
-grep -v '^$' temp > pop_map
-rm temp
+grep -v '^$' pop_map | sort | uniq > temp
 cp structure.txt structure_popmap.txt
 
-awk '{ print "sed" " " "-i" " " "'\''" "s/^" $2 "/" $2 " " $1 "/g" "'\''" " " "structure_popmap.txt"}' pop_map > to_sed.sh
+awk '{ print "sed" " " "-i" " " "'\''" "s/^" $2 "\\" "s+/" $2 " " $1 " /g" "'\''" " " "structure_popmap.txt"}' temp > to_sed.sh
+rm temp
 
 bash to_sed.sh
 ```
