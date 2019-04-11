@@ -64,7 +64,7 @@ grep -v '^$' temp > pop_map
 rm temp
 cp structure.txt structure_popmap.txt
 
-awk '{ print "sed" " " "-i" " " "'\''" "s/" $2 "/" $2 " " $1 "/g" "'\''" " " "structure_popmap.txt"}' pop_map > to_sed.sh
+awk '{ print "sed" " " "-i" " " "'\''" "s/^" $2 "/" $2 " " $1 "/g" "'\''" " " "structure_popmap.txt"}' pop_map > to_sed.sh
 
 bash to_sed.sh
 ```
