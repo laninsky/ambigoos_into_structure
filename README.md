@@ -1,4 +1,4 @@
-# ambigoos_into_structure v0.1.0 (correcting a pretty big bug!)
+# ambigoos_into_structure v0.1.0
 Taking fasta alignments with ambiguity codes and turning them into a structure file (or filtering down a pre-existing structure file)
 
 # What it does
@@ -71,7 +71,9 @@ bash to_sed.sh
 The struture_popmap.txt (or mod_structure_popmap.txt) files will have the population designator inserted in the second column.
 
 # Version history
-v0.1.0 The code assumed the order of taxa in each fasta files was the same, which will have led to nonsense results if this was not the case for your data. Sorting on sample name is now included in the onelining.R script in this repository.
+Wrote this originally for analyses that were conducted for Alexander, A.M., Su, Y.C., Oliveros, C.H., Olson, K.V., Travers, S.L. and Brown, R.M., 2017. Genomic data reveals potential for hybridization, introgression, and incomplete lineage sorting to confound phylogenetic relationships in an adaptive radiation of narrow‐mouth frogs. Evolution, 71(2), pp.475-488 (however these analyses didn't make it into the final paper). I am no longer actively maintaining this repository, but will respond to issues.
+
+v0.1.0 The code assumed the order of taxa in each fasta files was the same, which will have led to nonsense results if this was not the case for your data. Sorting on sample name is now included in the onelining.R script in this repository. 
 
 v0.0.0 Brand new, may have some bugs
 
